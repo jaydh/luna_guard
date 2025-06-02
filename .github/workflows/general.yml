@@ -33,7 +33,7 @@ jobs:
         run: cargo clippy
   harbor-ligthouse-image:
     name: Build image
-    runs-on: arc-runner-set
+    runs-on: arc-runner-set-luna-guard
     container: ${{ vars.RUNNER_IMAGE_URL }}
     needs: [clippy]
     steps:
@@ -56,7 +56,7 @@ jobs:
   harbor-ligthouse-image-push:
     if: github.event_name == 'push'
     name: Push image
-    runs-on: arc-runner-set
+    runs-on: arc-runner-set-luna-guard
     container: ${{ vars.RUNNER_IMAGE_URL }}
     needs: [harbor-ligthouse-image]
     steps:
