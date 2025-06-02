@@ -28,7 +28,7 @@ jobs:
       - name: Clippy
         run: cargo clippy
   harbor-ligthouse-image:
-    name: Build lighthouse image
+    name: Build image
     runs-on: arc-runner-set
     container: ${{ vars.RUNNER_IMAGE_URL }}
     needs: [clippy]
@@ -49,10 +49,9 @@ jobs:
           password: ${{ secrets.HARBOR_TOKEN}}
       - name: Build Image
         run: "docker build -t harbor.home.local/library/luna_guard:latest .\ndocker push harbor.home.local/library/luna_guard:latest \n"
-        working-directory: lighthouse
   harbor-ligthouse-image-push:
     if: github.event_name == 'push'
-    name: Push lighthouse image
+    name: Push image
     runs-on: arc-runner-set
     container: ${{ vars.RUNNER_IMAGE_URL }}
     needs: [harbor-ligthouse-image]
@@ -73,7 +72,5 @@ jobs:
           password: ${{ secrets.HARBOR_TOKEN}}
       - name: Build Image
         run: docker build -t harbor.home.local/library/luna_guard:latest .
-        working-directory: lighthouse
       - name: Push Image
         run: docker push harbor.home.local/library/luna_guard:latest
-        working-directory: lighthouse
