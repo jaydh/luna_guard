@@ -16,7 +16,6 @@ jobs:
     name: Clippy
     runs-on: arc-runner-set-luna-guard
     container: ${{ vars.RUNNER_IMAGE_URL }}
-    image: rust:latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
