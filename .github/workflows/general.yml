@@ -20,8 +20,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Clippy
-        run: |
-          bazel --bazelrc=.bazelrc.ci build clippy
+        run: cargo clippy
   harbor-ligthouse-image:
     name: Build lighthouse image
     runs-on: arc-runner-set
