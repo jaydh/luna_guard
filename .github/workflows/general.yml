@@ -12,6 +12,7 @@ env:
 jobs:
   clippy:
     name: Clippy
+    runs-on: arc-runner-set-luna-guard
     container: ${{ vars.RUNNER_IMAGE_URL }}
     steps:
       - name: Checkout repository
