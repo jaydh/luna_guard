@@ -2,12 +2,9 @@ use std::env;
 use std::process::Command;
 
 use anyhow::Result;
-use axum;
 use chrono::{DateTime, Utc};
 use clap::{Parser, Subcommand};
-use reqwest;
 use serde::{Deserialize, Serialize};
-use tokio;
 use tracing::{error, info, warn};
 
 #[derive(Parser)]
@@ -100,8 +97,6 @@ async fn run_server() -> Result<()> {
     struct TwilioWebhookBody {
         #[serde(rename = "Body")]
         body: Option<String>,
-        #[serde(rename = "From")]
-        from: Option<String>,
     }
 
     let state = AppState {};
